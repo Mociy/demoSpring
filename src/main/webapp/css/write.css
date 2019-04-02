@@ -1,0 +1,33 @@
+#header{
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#App{
+    display: flex;
+    flex-direction: column;
+    background: blanchedalmond;
+}
+#test{
+    display: flex;
+    justify-content: center;
+}
+#header input{
+    display: flex;
+    width: 600px;
+    height: 40px;
+    border-color:blueviolet;
+}
+#one{
+    display: flex;
+    width: 1000px;
+    flex-direction: row-reverse;
+    background: blanchedalmond;
+}
+#one button{
+    margin-left: 130px;
+
+}

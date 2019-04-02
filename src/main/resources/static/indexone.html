@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<div id="app">
+    <div @click="go">123</div>
+</div>
+
+<script>
+
+    const app = new Vue({
+        el:'#app',
+        data:{
+            url0:'123'
+        },
+        methods:{
+          go:function () {
+              window.location.href("/one/"+this.url0)
+          }
+        }
+    })
+</script>
+</body>
+</html>

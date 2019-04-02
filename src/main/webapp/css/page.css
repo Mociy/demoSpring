@@ -1,0 +1,57 @@
+#content{
+    padding: 5px;
+    margin:0 auto;
+    background: aliceblue;
+    width:90%;
+    border:35px groove azure;
+    border-radius:10px;
+}
+pre{
+    background: beige;
+}
+#header{
+    height: 200px;
+}
+#App1{
+
+}
+body{
+    background:antiquewhite;
+}
+#date{
+    text-align:center
+}
+#title{
+    width:90%;
+    margin: auto auto;
+    background:aliceblue;
+    border:10px solid sienna;
+    border-radius:10px;
+    text-align: center;
+
+}
+#center1{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+#center{
+    display: flex;
+    flex-direction: row;
+}
+#left{
+    display: flex;
+    width: 15%;
+    height: 300px;
+    padding: 5px;
+    background: sandybrown;
+    border-radius: 5%;
+}
+#right{
+    display: flex;
+    width: 15%;
+    height: 300px;
+    padding: 5px;
+    background: sandybrown;
+    border-radius: 5%;
+}
