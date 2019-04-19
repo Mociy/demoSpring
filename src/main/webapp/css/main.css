@@ -51,8 +51,8 @@ input::-webkit-search-cancel-button{
     flex-direction: column;
     justify-content: center;
     margin-top:20px;
-    width: 70%;
-    margin-left: 15%;
+    width: 80%;
+    margin-left: 10%;
     border: 5px solid sienna;
     border-radius: 2%;
 

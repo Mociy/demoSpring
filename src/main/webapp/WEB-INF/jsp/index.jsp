@@ -20,8 +20,8 @@
 <div id="app">
 
     <div id="header">
-        <input type="search" ref="tag">
-        <button id="btn1"  v-on:click="getTwo">搜索</button>
+        <input type="search" ref="tag"  placeholder="java">
+        <button id="btn1"  v-on:click="getTwo">搜索标签</button>
 
     </div>
 
@@ -66,6 +66,7 @@
                         console.log('请求失败处理');
                     });
                 }
+                else this.getdata();
             },
             getdata:function(){
                 this.$http.post('/getAll').then(function (res) {

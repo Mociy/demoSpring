@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-@Mapper
+@Repository
 public interface MyintDao {
     ArrayList<Myint> query(String tag);
 
@@ -17,6 +17,8 @@ public interface MyintDao {
     List<News> queryAll();
 
     void insertNews(News news);
+
+
 
     void insertTags(Myint myint);
 }

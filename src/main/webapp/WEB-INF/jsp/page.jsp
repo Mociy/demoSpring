@@ -19,20 +19,23 @@
 <div id="App1">
     <div id="header"></div>
     <div id="center">
-        <div id="left">aaaaaaaaa</div>
+
     <input  value="${newsid}" ref="one" type="hidden">
     <div id="center1">
     <div id="title">
         <h2 class="titleone">{{news.title}}</h2>
     </div>
+        <div id="left">
+        <div v-for="tag in news.tags">
+            <div class="tag">{{tag}}</div>
+        </div>
+        </div>
     <div id="content">
         <div v-html="news.content"></div>
         <p id="date">{{news.date}}</p>
 
     </div>
-    </div>
-        <div id="right"></div>
-    </div>
+
     <div style="height: 150px"></div>
 </div>
 
@@ -65,6 +68,5 @@ window.onload=function() {
 }
 
 </script>
-<canvas id="canvas"></canvas>
 </body>
 </html>

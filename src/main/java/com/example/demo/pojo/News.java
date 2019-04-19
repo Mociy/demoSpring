@@ -3,10 +3,11 @@ package com.example.demo.pojo;
 import org.apache.ibatis.type.Alias;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.List;
 @Component("news")
 @Alias(value="news")
-public class News {
+public class News implements Serializable {
     private String newsid;
     private String content;
     private String start;

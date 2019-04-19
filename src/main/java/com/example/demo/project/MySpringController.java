@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.util.ArrayList;
@@ -70,7 +72,7 @@ import java.util.Map;
             return news;
 
         }
-        @RequestMapping("/getAll")
+        @PostMapping("/getAll")
         @ResponseBody
         public List<News> getAll(){
             return myintService.queryAll();
@@ -82,14 +84,17 @@ import java.util.Map;
         }
         @RequestMapping("/get")
         @ResponseBody
-        public News getNews(String newsid){
+        public News getNews(String newsid,HttpServletRequest request){
+            System.out.println(request.getRemoteAddr()+"          "+request.getRemoteHost());
             news=myintService.queryNews(newsid);
                  news.setTags(myintService.queryTags(newsid));
             return news;
         }
         @RequestMapping("/write")
-        public String writePage(){
-
+        public String writePage(@ModelAttribute("name")String name,Model model){
+                  System.out.println(name+"111");
+                  if(name==null||name.equals(""))
+                      return "login";
             return "write";
         }
         @RequestMapping("/postContent")
@@ -99,7 +104,7 @@ import java.util.Map;
             int i=0;
             news.setNewsid(String.valueOf(System.currentTimeMillis()));
             String regEx_html="<[^>]+>";
-            news.setStart(news.getContent().replaceAll("<code>.*<\\/code>","").replaceAll(regEx_html,"").replaceAll("[\\n\\s&nbsp;]","").replaceAll("gt",">").substring(0,60));
+            news.setStart(news.getContent().replaceAll("<code>.*<\\/code>","").replaceAll(regEx_html,"").replaceAll("[\\n|\\s|&nbsp;]","").replaceAll("gt",">").substring(0,60));
             myintService.insertNews(news);
             System.out.println(news.getContent());
              String[] tags= news.getTag().split("[, ，]");
@@ -115,4 +120,21 @@ import java.util.Map;
              map.put("ok","content");
             return map;
         }
+        @RequestMapping("/login")
+        public String toLogin(){
+            return "login";
+        }
+        @RequestMapping("/getLogin")
+        public String getLogin(HttpServletRequest request, HttpServletResponse response, RedirectAttributes attr) throws Exception{
+            String name=request.getParameter("name");
+            String password=request.getParameter("password");
+            System.out.println(password);
+
+            if(password.equals("123")){
+                attr.addFlashAttribute("name",name);
+                return "redirect:/write";
+            }
+          return "redirect:/";
+        }
+
     }

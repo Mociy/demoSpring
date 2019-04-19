@@ -5,6 +5,7 @@ import com.example.demo.pojo.Myint;
 import com.example.demo.pojo.News;
 import com.example.demo.service.Myintservice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,10 +23,13 @@ public class MyintService  implements Myintservice {
     public List<String> queryTags(String newsid){
         return MyintDao.queryTags(newsid);
     }
+
     @Override
+    @Cacheable(value = "redisCache",key="'redis_News'+#newsid")
     public News queryNews(String newsid){
         return MyintDao.queryNews(newsid);
     }
+
     @Override
     public List<News> queryAll(){
         return MyintDao.queryAll();
